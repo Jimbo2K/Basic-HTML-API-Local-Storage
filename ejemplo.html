@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<title>Ejemplo HTML para jstorage.js</title>
+	<meta charset="UTF-8">
+	<script src="js/jstorage.js"></script>
+	<script>
+		function extractSStorage(){
+			var i;
+			var aux=document.getElementById('output1');
+			if (typeof(Storage)!== 'undefined'){
+				for (i in sessionStorage){
+					aux.value=aux.value + '\n' + i + ': ' + sessionStorage[i];
+				}
+			}	else {
+				alert('Su navegador no soporta HTML5 API Storage');
+				console.log('ERROR: Su navegador no soporta HTML5 API Storage');
+			}
+		}
+	</script>
+</head>
+<body>
+	<h1>Ejemplo HTML de uso de la librería jstorage.js</h1>
+	<form action="#" name="formulario">
+		<label for="value1">Escriba algo en el siguiente campo de texto:</label>
+		<input type="text" name="value1" id="value1" maxlength="25" size="25">
+		<button type="button" onclick="valueToSStorage('value1');">Valor a Session Storage</button>
+	</form>
+	<hr>
+	<p>Escribe algo a continuación:<span contenteditable="true" id="content1"></span></p>
+	<button type="button" onclick="inhtmlToSStorage('content1')">Contenido a Session Storage</button>
+	<hr>
+	<button type="button" onclick="sStorageToValue('output1', 'value1');sStorageToInhtml('output2', 'value1');">Mostrar valor almacenado</button>
+	<button type="button" onclick="sStorageToValue('output1', 'content1');sStorageToInhtml('output2', 'content1');">Mostrar contenido almacenado</button>
+	<button type="button" onclick="extractSStorage();">Mostrar Session Storage</button><br><br>
+	<textarea form="formulario" name="output1" id="output1" cols="30" rows="10" readonly></textarea><br>
+	<p id="output2"></p>
+</body>
+</html>

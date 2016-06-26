@@ -36,8 +36,10 @@ function valueToSStorage(pobj){ //pobj debe ser un elemento o id de elemento vá
 	/*SI el navegador dispone del objeto Storage*/
 	if (typeof(Storage)!== 'undefined'){
 		var aux=selectObjId(pobj); //comprueba si pobj es válido para operar
+		console.log('aux:');
+		console.log(aux.value);
 		/*SI pobj es válido Y pobj.value SI existe*/
-		if ((aux!==null) && (aux.hasOwnProperty('value'))){
+		if ((aux!==null) && (aux.value!==undefined)){
 			sessionStorage.setItem(aux.id, aux.value); //value se almacena en sessionStorage con el mismo id que pobj
 		}
 		/*SI pobj NO es válido O pobj.value NO existe*/
@@ -56,7 +58,7 @@ function valueToSStorage(pobj){ //pobj debe ser un elemento o id de elemento vá
 function inhtmlToSStorage(pobj){ //pobj debe ser un elemento o id de elemento válido
 	if (typeof(Storage)!== 'undefined'){
 		var aux=selectObjId(pobj);
-		if ((aux!==null) && (aux.hasOwnProperty('innerHTML'))){
+		if ((aux!==null) && (aux.innerHTML!==undefined)){
 			sessionStorage.setItem(aux.id, aux.innerHTML);
 		}
 		else {
@@ -75,7 +77,7 @@ function sStorageToValue(pobj, pid){ //pobj debe ser un elemento o id de element
 		var aux=selectObjId(pobj); //comprueba si pobj es válido para operar
 		var idaux=pid;
 		/*SI pobj es válido Y pobj.value SI existe*/
-		if ((aux!==null) && (aux.hasOwnProperty('value'))){
+		if ((aux!==null) && (aux.value!==undefined)){
 			if (idaux=== undefined) {idaux=aux.id;} //Si no se pasa el argumento pid se asigna por defecto pobj.id
 			aux.value=sessionStorage.getItem(idaux); //El contenido de sessionStorage.idaux se alamcena en pobj.value
 		}
@@ -95,7 +97,7 @@ function sStorageToInhtml(pobj, pid){ //pobj debe ser un elemento o id de elemen
 	if (typeof(Storage)!== 'undefined'){
 		var aux=selectObjId(pobj);
 		var idaux=pid;
-		if ((aux!==null) && (aux.hasOwnProperty('innerHTML'))){
+		if ((aux!==null) && (aux.innerHTML!==undefined)){
 			if (idaux=== undefined) {idaux=aux.id;}
 			aux.innerHTML=sessionStorage.getItem(idaux);
 		}
@@ -114,7 +116,7 @@ function sStorageToInhtml(pobj, pid){ //pobj debe ser un elemento o id de elemen
 function valueToLStorage(pobj){ //pobj debe ser un elemento o id de elemento válido
 	if (typeof(Storage)!== 'undefined'){
 		var aux=selectObjId(pobj);
-		if ((aux!==null) && (aux.hasOwnProperty('value'))){
+		if ((aux!==null) && (aux.value!==undefined)){
 			localStorage.setItem(aux.id, aux.value);
 		}
 		else {
@@ -128,7 +130,7 @@ function valueToLStorage(pobj){ //pobj debe ser un elemento o id de elemento vá
 function inhtmlToLStorage(pobj){ //pobj debe ser un elemento o id de elemento válido
 	if (typeof(Storage)!== 'undefined'){
 		var aux=selectObjId(pobj);
-		if ((aux!==null) && (aux.hasOwnProperty('innerHTML'))){
+		if ((aux!==null) && (aux.innerHTML!==undefined)){
 			localStorage.setItem(aux.id, aux.innerHTML);
 		}
 		else {
@@ -143,7 +145,7 @@ function lStorageToValue(pobj, pid){ //pobj debe ser un elemento o id de element
 	if (typeof(Storage)!== 'undefined'){
 		var aux=selectObjId(pobj);
 		var idaux=pid;
-		if ((aux!==null) && (aux.hasOwnProperty('value'))){
+		if ((aux!==null) && (aux.value!==undefined)){
 			if (idaux=== undefined) {idaux=aux.id;}
 			aux.value=localStorage.getItem(idaux);
 		}
@@ -159,7 +161,7 @@ function lStorageToInhtml(pobj, pid){ //pobj debe ser un elemento o id de elemen
 	if (typeof(Storage)!== 'undefined'){
 		var aux=selectObjId(pobj);
 		var idaux=pid;
-		if ((aux!==null) && (aux.hasOwnProperty('innerHTML'))){
+		if ((aux!==null) && (aux.inneHTML!==undefined)){
 			if (idaux=== undefined) {idaux=aux.id;}
 			aux.innerHTML=localStorage.getItem(idaux);
 		}
